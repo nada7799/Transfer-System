@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+
+  # MySQL database
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    ports:
+      - "3307:3306"  # Maps port 3306 on the host to port 3306 in the container
+    environment:
+      MYSQL_ROOT_PASSWORD: nadabella22
+      MYSQL_DATABASE: MoneyTransfer
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+volumes:
+  mysql_data:
