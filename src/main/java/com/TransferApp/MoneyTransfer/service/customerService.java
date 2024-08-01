@@ -6,6 +6,7 @@ import com.TransferApp.MoneyTransfer.dto.updateCustomerDTO;
 import com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException;
 import com.TransferApp.MoneyTransfer.model.Customer;
 import com.TransferApp.MoneyTransfer.reporsitory.CustomerRepository;
+import com.TransferApp.MoneyTransfer.service.ICustomer;
 import com.TransferApp.MoneyTransfer.utils.HasUserAccess;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,8 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 
-public class customerService implements ICustomer{
-     private final CustomerRepository customerRepository;
+public class customerService implements ICustomer {
+     private  final CustomerRepository customerRepository;
     @HasUserAccess
     @Override
     @Transactional(isolation = Isolation.SERIALIZABLE)
@@ -60,6 +61,13 @@ public class customerService implements ICustomer{
         Customer customer= customerRepository.findById(id)
                 .orElseThrow(()-> new CustomerNotFoundException(String.format("Customer with id %d not found", id)));
         return  customer.toDTO();
+    }
+
+    @Override
+    public double getBalance(long id) throws CustomerNotFoundException {
+        Customer customer = customerRepository.findById(id)
+                .orElseThrow(() -> new CustomerNotFoundException(String.format("Customer with id %d not found", id)));
+        return customer.getAccount().getBalance();
     }
 
 }

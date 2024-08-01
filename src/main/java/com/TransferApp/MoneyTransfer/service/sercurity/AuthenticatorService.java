@@ -51,7 +51,7 @@ public class AuthenticatorService implements IAuthenticator {
         Account account = Account.builder()
                 .accountNumber(String.valueOf(new SecureRandom().nextInt(100000000)))
                 .accountName(createCustomerDto.getFirstName()).accountType(AccountType.SAVING)
-                .balance(0.0)
+                .balance(10000000)
                 .currency(Currency.EGP)
                 .build();
 
@@ -72,7 +72,6 @@ public class AuthenticatorService implements IAuthenticator {
                 .build();
 
         customerRepository.save(customer);
-
         return  customer.toDTO();
     }
 

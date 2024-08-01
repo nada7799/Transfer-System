@@ -4,6 +4,7 @@ import com.TransferApp.MoneyTransfer.dto.customerDTO;
 import com.TransferApp.MoneyTransfer.dto.updateCustomerDTO;
 import com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException;
 import com.TransferApp.MoneyTransfer.service.ICustomer;
+import com.TransferApp.MoneyTransfer.service.customerService;
 import com.TransferApp.MoneyTransfer.utils.HasUserAccess;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

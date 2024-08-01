@@ -10,6 +10,7 @@ public interface ICustomer {
     customerDTO updateCustomer(long id, updateCustomerDTO updateCustomerDTO) throws CustomerNotFoundException;
     void deleteCustomer(long id)throws CustomerNotFoundException;
     customerDTO getCustomerById(long id) throws CustomerNotFoundException;
+    double getBalance(long id) throws CustomerNotFoundException;
 
 
 }
