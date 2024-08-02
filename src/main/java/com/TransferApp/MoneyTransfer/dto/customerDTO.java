@@ -20,8 +20,7 @@ public class customerDTO implements Serializable {
     private   String lastName;
 
     private GenderEnum gender;
-
-    private  String email;
+     private String email;
 
     private   String phoneNumber;
 
@@ -33,5 +32,4 @@ public class customerDTO implements Serializable {
 
     private   LocalDate dateOfBirth;
 
-    private  accountDTO accountDTO;
 }

@@ -1,8 +1,5 @@
 package com.TransferApp.MoneyTransfer.service.sercurity;
-import com.TransferApp.MoneyTransfer.dto.createCustomerDto;
-import com.TransferApp.MoneyTransfer.dto.customerDTO;
-import com.TransferApp.MoneyTransfer.dto.loginRequestDTO;
-import com.TransferApp.MoneyTransfer.dto.loginResponseDTO;
+import com.TransferApp.MoneyTransfer.dto.*;
 import com.TransferApp.MoneyTransfer.enums.AccountType;
 import com.TransferApp.MoneyTransfer.enums.Currency;
 import com.TransferApp.MoneyTransfer.exception.CustomerAlreadyExistsException;
@@ -35,11 +32,12 @@ public class AuthenticatorService implements IAuthenticator {
     private final PasswordEncoder passwordEncoder;
     private final TokenBlacklistService tokenBlacklistService;
 
+
     @Override
     @Transactional
-    public customerDTO register(createCustomerDto createCustomerDto) throws CustomerAlreadyExistsException
+    public accountDTO register(createCustomerDto createCustomerDto) throws CustomerAlreadyExistsException
     {
-        if(this.customerRepository.existsByEmail(createCustomerDto.getEmail())) {
+        if(this.customerRepository.existsByEmail(createCustomerDto.getEmail()) ) {
             throw new CustomerAlreadyExistsException(String.format("Customer with email %s already exists", createCustomerDto.getEmail()));
         }
         if(this.customerRepository.existsByNationalIdNumber(createCustomerDto.getNationalNumber())) {
@@ -48,12 +46,7 @@ public class AuthenticatorService implements IAuthenticator {
         if(this.customerRepository.existsByPhoneNumber(createCustomerDto.getPhoneNumber())) {
             throw new CustomerAlreadyExistsException(String.format("Customer with phone number %s already exists", createCustomerDto.getPhoneNumber()));
         }
-        Account account = Account.builder()
-                .accountNumber(String.valueOf(new SecureRandom().nextInt(100000000)))
-                .accountName(createCustomerDto.getFirstName()).accountType(AccountType.SAVING)
-                .balance(10000000)
-                .currency(Currency.EGP)
-                .build();
+
 
 
 
@@ -62,17 +55,24 @@ public class AuthenticatorService implements IAuthenticator {
                 .firstName(createCustomerDto.getFirstName())
                 .lastName(createCustomerDto.getLastName())
                 .gender(createCustomerDto.getGender())
-                .email(createCustomerDto.getEmail())
                 .phoneNumber(createCustomerDto.getPhoneNumber())
                 .address(createCustomerDto.getAddress())
                 .nationality(createCustomerDto.getNationality())
                 .nationalIdNumber(createCustomerDto.getNationalNumber())
+                .email(createCustomerDto.getEmail())
+                .password(passwordEncoder.encode(createCustomerDto.getPassword()))
                 .dateOfBirth(createCustomerDto.getDateOfBirth())
-                .password(passwordEncoder.encode(createCustomerDto.getPassword())).account(accountRepository.save(account))
+                .build();
+        Account account = Account.builder()
+                .accountNumber(String.valueOf(new SecureRandom().nextInt(100000000)))
+                .accountName(createCustomerDto.getFirstName()).accountType(AccountType.SAVING)
+                .balance(10000)
+                .currency(Currency.EGP)
+                .customer(customerRepository.save(customer))
                 .build();
 
-        customerRepository.save(customer);
-        return  customer.toDTO();
+        accountRepository.save(account);
+        return  account.toDTO();
     }
 
     @Override

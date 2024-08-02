@@ -34,6 +34,7 @@ public class JwtUtils {
         CustomerDetailsImpl customerDetails = (CustomerDetailsImpl) authentication.getPrincipal();
         return Jwts.builder()
                 .setSubject(customerDetails.getUsername())
+                .claim("id", customerDetails.getId())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
                 .signWith(key(), SignatureAlgorithm.HS256)

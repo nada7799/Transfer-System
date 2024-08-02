@@ -13,7 +13,7 @@ import java.util.Collections;
 @AllArgsConstructor
 @Builder
 public class CustomerDetailsImpl implements UserDetails {
-
+      private Long id;
     private String email;
     private String password;
     @Override
@@ -29,5 +29,9 @@ public class CustomerDetailsImpl implements UserDetails {
     @Override
     public String getUsername() {
         return this.email;
+    }
+
+    public long getId() {
+        return this.id;
     }
 }

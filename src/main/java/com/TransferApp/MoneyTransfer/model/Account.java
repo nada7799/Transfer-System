@@ -6,6 +6,7 @@ import com.TransferApp.MoneyTransfer.enums.AccountType;
 import com.TransferApp.MoneyTransfer.enums.Currency;
 import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -35,6 +36,7 @@ public class Account {
     private Currency currency;
     @Enumerated(value = EnumType.STRING)
     private AccountType accountType;
+
      @Builder.Default
    private boolean isActive = true;
     @CreationTimestamp
@@ -43,7 +45,8 @@ public class Account {
     @UpdateTimestamp
     private LocalDateTime updatedAt;
 
-    @OneToOne(mappedBy = "account")
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
     private Customer customer;
 
     @ManyToOne
@@ -79,6 +82,7 @@ public class Account {
                 .currency(this.currency)
                .createdAt(this.createdAt)
                .updatedAt(this.updatedAt)
+               .customer(this.customer.toDTO())
                 .build();
     }
 }

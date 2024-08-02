@@ -3,6 +3,7 @@ package com.TransferApp.MoneyTransfer.controller;
 
 import com.TransferApp.MoneyTransfer.dto.CreateAccountDto;
 import com.TransferApp.MoneyTransfer.dto.UpdateAccountDto;
+import com.TransferApp.MoneyTransfer.exception.CustomerAlreadyExistsException;
 import com.TransferApp.MoneyTransfer.model.Account;
 import com.TransferApp.MoneyTransfer.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,12 +33,17 @@ public class AccountController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PostMapping
-    public ResponseEntity<Account> createAccount(@Valid @RequestBody CreateAccountDto createAccountDTO) {
-        Account createdAccount = accountService.createAccount(createAccountDTO);
+    @PostMapping("customer/{id}")
+    public ResponseEntity<Account> createAccount(@Valid @RequestBody CreateAccountDto createAccountDTO,@PathVariable long id) throws CustomerAlreadyExistsException {
+
+        Account createdAccount = accountService.createAccount(createAccountDTO,id);
         return ResponseEntity.status(201).body(createdAccount);
     }
-
+    @GetMapping("/customer/{customerId}")
+    public ResponseEntity<List<Account>> getAccountsByCustomerId(@PathVariable Long customerId) {
+        List<Account> accounts = accountService.getAccountsByCustomerId(customerId);
+        return ResponseEntity.ok(accounts);
+}
     @PutMapping("/{id}")
     public ResponseEntity<Account> updateAccount(@PathVariable Long id, @Valid @RequestBody UpdateAccountDto updateAccountDTO) {
         Account updatedAccount = accountService.updateAccount(id, updateAccountDTO);

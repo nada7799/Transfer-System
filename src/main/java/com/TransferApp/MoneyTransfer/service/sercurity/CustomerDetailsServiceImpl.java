@@ -2,7 +2,9 @@ package com.TransferApp.MoneyTransfer.service.sercurity;
 
 
 import com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException;
+import com.TransferApp.MoneyTransfer.model.Account;
 import com.TransferApp.MoneyTransfer.model.Customer;
+import com.TransferApp.MoneyTransfer.reporsitory.AccountRepository;
 import com.TransferApp.MoneyTransfer.reporsitory.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -19,8 +21,9 @@ public class CustomerDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Customer customer = this.customerRepository.findUserByEmail(username).orElseThrow(() -> new CustomerNotFoundException("customer not found with email: "+ username));
+        Customer customer = this.customerRepository.findByEmail(username).orElseThrow(() -> new CustomerNotFoundException("customer not found with email: "+ username));
         return CustomerDetailsImpl.builder()
+                .id(customer.getId())
                 .email(customer.getEmail())
                 .password(customer.getPassword())
                 .build();

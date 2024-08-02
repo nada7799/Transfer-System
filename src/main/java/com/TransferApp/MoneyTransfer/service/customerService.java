@@ -63,11 +63,5 @@ public class customerService implements ICustomer {
         return  customer.toDTO();
     }
 
-    @Override
-    public double getBalance(long id) throws CustomerNotFoundException {
-        Customer customer = customerRepository.findById(id)
-                .orElseThrow(() -> new CustomerNotFoundException(String.format("Customer with id %d not found", id)));
-        return customer.getAccount().getBalance();
-    }
 
 }

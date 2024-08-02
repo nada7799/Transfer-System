@@ -1,14 +1,15 @@
 package com.TransferApp.MoneyTransfer.service;
 
 import com.TransferApp.MoneyTransfer.dto.TransferRequestDTO;
+import com.TransferApp.MoneyTransfer.enums.Currency;
 import com.TransferApp.MoneyTransfer.enums.TransactionType;
 import com.TransferApp.MoneyTransfer.model.Account;
+import com.TransferApp.MoneyTransfer.model.Customer;
 import com.TransferApp.MoneyTransfer.model.Transaction;
 import com.TransferApp.MoneyTransfer.reporsitory.AccountRepository;
 import com.TransferApp.MoneyTransfer.reporsitory.TransactionRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,6 +33,9 @@ public class TransactionService  implements ITransaction{
         if (sourceAccount.getBalance() < transferRequest.getAmount()) {
             throw new IllegalArgumentException("Insufficient funds in source account");
         }
+        Currency sourceCurrency = sourceAccount.getCurrency();
+        Currency destinationCurrency = destinationAccount.getCurrency();
+
          // do currency conversion here
         // Update source account balance
         sourceAccount.setBalance(sourceAccount.getBalance() - transferRequest.getAmount());

@@ -12,9 +12,14 @@ import java.time.LocalDateTime;
 @Builder
 public class accountDTO {
     private final long id;
+
     private final String accountNumber;
+
     private final String accountName;
+
     private final double balance;
+
+
 
     private final Currency currency;
 
@@ -25,5 +30,6 @@ public class accountDTO {
 
     private final LocalDateTime updatedAt;
 
+    private customerDTO customer;
 
 }

@@ -1,6 +1,8 @@
 package com.TransferApp.MoneyTransfer.service.sercurity;
 
+import com.TransferApp.MoneyTransfer.model.Account;
 import com.TransferApp.MoneyTransfer.model.Customer;
+import com.TransferApp.MoneyTransfer.reporsitory.AccountRepository;
 import com.TransferApp.MoneyTransfer.reporsitory.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -16,7 +18,7 @@ public class UserAuthorizationService {
     private CustomerRepository customerRepository;
 
     public boolean canAccessUser(Long id, String username) {
-        Optional<Customer> customer = customerRepository.findUserByEmail(username);
-        return customer != null && (customer.get().getId() == id);
+        Optional<Customer> customer= customerRepository.findByEmail(username);
+        return customer.isPresent() && (customer.get().getId() == id);
     }
 }

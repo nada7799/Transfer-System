@@ -3,6 +3,7 @@ package com.TransferApp.MoneyTransfer.model;
 
 import com.TransferApp.MoneyTransfer.dto.customerDTO;
 import com.TransferApp.MoneyTransfer.enums.GenderEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -14,6 +15,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Set;
 
 @Entity
 @Data
@@ -29,13 +31,17 @@ public class Customer implements Serializable {
     private String firstName;
     @Column(nullable = false)
     private String lastName;
-
+    @Enumerated(value = EnumType.STRING)
     private GenderEnum gender;
-    @Column(nullable = false, unique = true)
-    private String email;
+
     @Column(nullable = false, unique = true)
     private String phoneNumber;
 
+
+    @Column(nullable = false)
+    private String email;
+    @NotNull
+    private String password;
     private String address;
 
    private String nationality;
@@ -43,12 +49,12 @@ public class Customer implements Serializable {
    private String nationalIdNumber;
     @Column(nullable = false)
      private LocalDate dateOfBirth;
-    @NotNull
-    private String password;
+
     @CreationTimestamp
     private LocalDateTime creationTime;
-    @OneToOne
-   private Account account;
+    @OneToMany(mappedBy = "customer")
+    @JsonIgnore
+    private Set<Account> accounts;
 
     public customerDTO toDTO(){
         return customerDTO.builder()
@@ -56,13 +62,12 @@ public class Customer implements Serializable {
                 .firstName(this.firstName)
                 .lastName(this.lastName)
                 .gender(this.gender)
-                .email(this.email)
                 .phoneNumber(this.phoneNumber)
                 .address(this.address)
                 .nationality(this.nationality)
                 .nationalNumber(this.nationalIdNumber)
                 .dateOfBirth(this.dateOfBirth)
-                .accountDTO(this.account.toDTO())
+                .email(this.email)
                 .build();
     }
 
