@@ -3,6 +3,8 @@ package com.TransferApp.MoneyTransfer.controller;
 import com.TransferApp.MoneyTransfer.dto.customerDTO;
 import com.TransferApp.MoneyTransfer.dto.updateCustomerDTO;
 import com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException;
+import com.TransferApp.MoneyTransfer.model.FavoriteRecipient;
+import com.TransferApp.MoneyTransfer.service.FavoriteRecipientService;
 import com.TransferApp.MoneyTransfer.service.ICustomer;
 import com.TransferApp.MoneyTransfer.service.customerService;
 import com.TransferApp.MoneyTransfer.utils.HasUserAccess;
@@ -11,6 +13,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+import java.util.Set;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api")
@@ -18,6 +23,8 @@ import org.springframework.web.bind.annotation.*;
 
 public class CustomerController {
     private final ICustomer customerService;
+
+
 
 
     @GetMapping("/{id}")

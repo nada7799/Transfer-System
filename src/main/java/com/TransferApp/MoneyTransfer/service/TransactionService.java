@@ -4,7 +4,6 @@ import com.TransferApp.MoneyTransfer.dto.TransferRequestDTO;
 import com.TransferApp.MoneyTransfer.enums.Currency;
 import com.TransferApp.MoneyTransfer.enums.TransactionType;
 import com.TransferApp.MoneyTransfer.model.Account;
-import com.TransferApp.MoneyTransfer.model.Customer;
 import com.TransferApp.MoneyTransfer.model.Transaction;
 import com.TransferApp.MoneyTransfer.reporsitory.AccountRepository;
 import com.TransferApp.MoneyTransfer.reporsitory.TransactionRepository;
@@ -21,6 +20,7 @@ public class TransactionService  implements ITransaction{
 
     private final TransactionRepository transactionRepository;
     private final AccountRepository accountRepository;
+    private final CurrencyConverter currencyConversionService;
 
     @Override
     @Transactional
@@ -35,19 +35,39 @@ public class TransactionService  implements ITransaction{
         }
         Currency sourceCurrency = sourceAccount.getCurrency();
         Currency destinationCurrency = destinationAccount.getCurrency();
+        double convertedAmount = transferRequest.getAmount();
 
-         // do currency conversion here
+        // If the source and destination currencies are different, do the currency conversion
+        if (!sourceCurrency.equals(destinationCurrency)) {
+            double conversionRate = currencyConversionService.getConversionRate(sourceCurrency.toString(), destinationCurrency.toString());
+            convertedAmount = transferRequest.getAmount() * conversionRate;
+        }
+
+        // do currency conversion here
         // Update source account balance
         sourceAccount.setBalance(sourceAccount.getBalance() - transferRequest.getAmount());
         accountRepository.save(sourceAccount);
 
         // Update destination account balance
-        destinationAccount.setBalance(destinationAccount.getBalance() + transferRequest.getAmount());
+        destinationAccount.setBalance(destinationAccount.getBalance() + convertedAmount);
         accountRepository.save(destinationAccount);
 
         // Record the transactions
-        recordTransaction(sourceAccount,destinationAccount, transferRequest.getAmount(), transferRequest.getTransactionType(), "Transfer from " + sourceAccount.getAccountName() + " to " + destinationAccount.getAccountName());
+        // Record the transactions
+        recordTransaction(sourceAccount, destinationAccount, transferRequest.getAmount(), convertedAmount, transferRequest.getTransactionType(), "Transfer from " + sourceAccount.getAccountName() + " to " + destinationAccount.getAccountName());
+    }
 
+    private void recordTransaction(Account sourceAccount, Account destinationAccount, Double sourceAmount, Double destinationAmount, TransactionType type, String description) {
+        Transaction transaction = Transaction.builder()
+                .amount(sourceAmount)
+                .convertedAmount(destinationAmount)
+                .fromAccount(sourceAccount)
+                .toAccount(destinationAccount)
+                .transactionType(type)
+                .description(description)
+                .status("SUCCESS")
+                .build();
+        transactionRepository.save(transaction);
     }
     private void recordTransaction(Account sourceAccount,Account destinationAccount, Double amount, TransactionType type, String description) {
         Transaction transaction = Transaction.builder()

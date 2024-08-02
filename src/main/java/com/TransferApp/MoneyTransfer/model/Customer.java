@@ -56,6 +56,9 @@ public class Customer implements Serializable {
     @JsonIgnore
     private Set<Account> accounts;
 
+
+
+
     public customerDTO toDTO(){
         return customerDTO.builder()
                 .id(this.id)

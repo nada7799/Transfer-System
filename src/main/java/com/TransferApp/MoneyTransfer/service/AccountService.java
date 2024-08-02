@@ -2,6 +2,7 @@ package com.TransferApp.MoneyTransfer.service;
 
 import com.TransferApp.MoneyTransfer.dto.CreateAccountDto;
 import com.TransferApp.MoneyTransfer.dto.UpdateAccountDto;
+import com.TransferApp.MoneyTransfer.dto.accountDTO;
 import com.TransferApp.MoneyTransfer.enums.AccountType;
 import com.TransferApp.MoneyTransfer.enums.Currency;
 import com.TransferApp.MoneyTransfer.exception.CustomerAlreadyExistsException;
@@ -27,6 +28,9 @@ public class AccountService {
 
     @Autowired
     private CustomerRepository customerRepository;
+
+    @Autowired
+    private CurrencyConverter  currencyConverter;
 
 
     public List<Account> getAllAccounts() {
@@ -85,4 +89,13 @@ public class AccountService {
         } else {
             throw new CustomerNotFoundException("Customer not found");
 }
-}}
+}
+     public  accountDTO changeCurrency(Long accountId, Currency newCurrency){
+        Account account = accountRepository.findById(accountId).orElseThrow(() -> new RuntimeException("Account not found"));
+         double conversionRate = currencyConverter.getConversionRate(account.getCurrency().toString(),newCurrency.toString());
+         double convertedAmount = account.getBalance() * conversionRate;
+        account.setCurrency(newCurrency);
+        account.setBalance(convertedAmount);
+        return accountRepository.save(account).toDTO();
+     }
+}

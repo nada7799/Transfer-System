@@ -3,6 +3,8 @@ package com.TransferApp.MoneyTransfer.controller;
 
 import com.TransferApp.MoneyTransfer.dto.CreateAccountDto;
 import com.TransferApp.MoneyTransfer.dto.UpdateAccountDto;
+import com.TransferApp.MoneyTransfer.dto.accountDTO;
+import com.TransferApp.MoneyTransfer.enums.Currency;
 import com.TransferApp.MoneyTransfer.exception.CustomerAlreadyExistsException;
 import com.TransferApp.MoneyTransfer.model.Account;
 import com.TransferApp.MoneyTransfer.service.AccountService;
@@ -54,5 +56,10 @@ public class AccountController {
     public ResponseEntity<Void> deleteAccount(@PathVariable Long id) {
         accountService.deleteAccount(id);
         return ResponseEntity.noContent().build();
+    }
+    @PostMapping("currency/{id}/{currency}")
+    public ResponseEntity<accountDTO> changeCurrency(@PathVariable Long id, @PathVariable Currency currency) {
+        accountDTO updatedAccount = accountService.changeCurrency(id, currency);
+        return ResponseEntity.ok(updatedAccount);
     }
 }

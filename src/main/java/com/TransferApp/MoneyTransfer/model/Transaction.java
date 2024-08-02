@@ -42,6 +42,7 @@ public class Transaction {
 
      @Column( nullable = false)
     private double amount;
+     private double convertedAmount;
     @Column( nullable = false)
     private TransactionType transactionType;
     private String description;
