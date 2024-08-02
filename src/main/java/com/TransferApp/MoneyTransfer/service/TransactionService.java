@@ -9,6 +9,9 @@ import com.TransferApp.MoneyTransfer.reporsitory.AccountRepository;
 import com.TransferApp.MoneyTransfer.reporsitory.TransactionRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -100,8 +103,9 @@ public class TransactionService  implements ITransaction{
         return transactionRepository.findById(id);
     }
    @Transactional
-    public List<Transaction> getTransactionsByAccountId(Long accountId) {
-                return transactionRepository.findByFromAccountIdOrToAccountId(accountId, accountId).get();
+    public Page<Transaction> getTransactionsByAccountId(Long accountId) {
+       Pageable pageable = PageRequest.of(0, 2);
+       return transactionRepository.findByFromAccountIdOrToAccountId(accountId, accountId, pageable);
     }
 
     public List<Transaction> getAllTransactions() {
