@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -24,31 +25,34 @@ public class TransactionService  implements ITransaction{
     private final TransactionRepository transactionRepository;
     private final AccountRepository accountRepository;
     private final CurrencyConverter currencyConversionService;
-
+    private final InputSanitizer inputSanitizer;
     @Override
     @Transactional
     public void transferMoney(TransferRequestDTO transferRequest) {
-        Account sourceAccount = accountRepository.findById(transferRequest.getSourceAccountId())
+        Long sanitizedFromAccountId = inputSanitizer.sanitizeLong(transferRequest.getSourceAccountId().toString());
+        Long sanitizedToAccountId = inputSanitizer.sanitizeLong(transferRequest.getDestinationAccountId().toString());
+        Double sanitizedAmount = inputSanitizer.sanitizeDouble(transferRequest.getAmount().toString());
+        Account sourceAccount = accountRepository.findById(sanitizedFromAccountId)
                 .orElseThrow(() -> new IllegalArgumentException("Source account not found"));
-        Account destinationAccount = accountRepository.findById(transferRequest.getDestinationAccountId())
+        Account destinationAccount = accountRepository.findById(sanitizedToAccountId)
                 .orElseThrow(() -> new IllegalArgumentException("Destination account not found"));
 
-        if (sourceAccount.getBalance() < transferRequest.getAmount()) {
+        if (sourceAccount.getBalance() < sanitizedAmount) {
             throw new IllegalArgumentException("Insufficient funds in source account");
         }
         Currency sourceCurrency = sourceAccount.getCurrency();
         Currency destinationCurrency = destinationAccount.getCurrency();
-        double convertedAmount = transferRequest.getAmount();
+        double convertedAmount = sanitizedAmount;
 
         // If the source and destination currencies are different, do the currency conversion
         if (!sourceCurrency.equals(destinationCurrency)) {
             double conversionRate = currencyConversionService.getConversionRate(sourceCurrency.toString(), destinationCurrency.toString());
-            convertedAmount = transferRequest.getAmount() * conversionRate;
+            convertedAmount =sanitizedAmount * conversionRate;
         }
 
         // do currency conversion here
         // Update source account balance
-        sourceAccount.setBalance(sourceAccount.getBalance() - transferRequest.getAmount());
+        sourceAccount.setBalance(sourceAccount.getBalance() - sanitizedAmount);
         accountRepository.save(sourceAccount);
 
         // Update destination account balance
@@ -72,17 +76,6 @@ public class TransactionService  implements ITransaction{
                 .build();
         transactionRepository.save(transaction);
     }
-    private void recordTransaction(Account sourceAccount,Account destinationAccount, Double amount, TransactionType type, String description) {
-        Transaction transaction = Transaction.builder()
-                .amount(amount)
-                .fromAccount(sourceAccount)
-                .toAccount(destinationAccount)
-                .transactionType(type)
-                .description(description)
-                .status("SUCCESS")
-                .build();
-        transactionRepository.save(transaction);
-}
 
     public Transaction createTransaction(Long fromAccountId, Long toAccountId, double amount, TransactionType transactionType) {
         Account fromAccount = accountRepository.findById(fromAccountId)
@@ -104,8 +97,11 @@ public class TransactionService  implements ITransaction{
     }
    @Transactional
     public Page<Transaction> getTransactionsByAccountId(Long accountId) {
-       Pageable pageable = PageRequest.of(0, 2);
-       return transactionRepository.findByFromAccountIdOrToAccountId(accountId, accountId, pageable);
+       String sanitizedFromAccountId = inputSanitizer.sanitize(accountId.toString());
+       long fromAccountIdInt = Long.parseLong(sanitizedFromAccountId);
+
+       Pageable pageable = PageRequest.of(0, 2, Sort.by(Sort.Direction.DESC, "createdAt"));
+       return transactionRepository.findByFromAccountIdOrToAccountId(fromAccountIdInt, fromAccountIdInt, pageable);
     }
 
     public List<Transaction> getAllTransactions() {

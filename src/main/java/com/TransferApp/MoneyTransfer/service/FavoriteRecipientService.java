@@ -37,7 +37,7 @@ public class FavoriteRecipientService {
         return favoriteRecipientRepository.findByCustomerId(customerId);
     }
 
-    public void removeFavoriteRecipient(long id, long customerId) {
-        favoriteRecipientRepository.deleteByIdAndCustomerId(id, customerId);
+    public void removeFavoriteRecipient(long customerId, long reciepientId) {
+        favoriteRecipientRepository.deleteByCustomerIdAndRecipientId(customerId, reciepientId);
     }
 }

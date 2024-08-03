@@ -10,6 +10,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -49,6 +50,7 @@ public class FavoriteRecipientController {
             )
     )
     @GetMapping("/{customerId}")
+    @Transactional
     public List<FavoriteRecipient> getFavoriteRecipients(@PathVariable long customerId) {
         return favoriteRecipientService.getFavoriteRecipients(customerId);
     }
@@ -62,11 +64,12 @@ public class FavoriteRecipientController {
                     schema = @Schema(implementation = FavoriteRecipient.class)
             )
     )
-    @DeleteMapping("/{id}/{customerId}")
+      @Transactional
+    @DeleteMapping("/{customerId}/{reciepientId}")
     public void removeFavoriteRecipient(
-            @PathVariable long id,
-            @PathVariable long customerId) {
+            @PathVariable long customerId,
+            @PathVariable long reciepientId) {
 
-        favoriteRecipientService.removeFavoriteRecipient(id, customerId);
+        favoriteRecipientService.removeFavoriteRecipient(customerId, reciepientId);
     }
 }

@@ -20,7 +20,6 @@ public class accountDTO {
     private final double balance;
 
 
-
     private final Currency currency;
 
     private final AccountType accountType;

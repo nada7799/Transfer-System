@@ -1,0 +1,19 @@
+<configuration>
+    <!-- Custom Appender for User Activity Logs -->
+    <appender name="USER_ACTIVITY_FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/user-activity.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Root Logger - Adjust level to control general logging -->
+    <root level="info">
+        <appender-ref ref="USER_ACTIVITY_FILE"/>
+    </root>
+
+    <!-- Custom Logger for User Activities -->
+    <logger name="com.TransferApp.MoneyTransfer.logging.UserActivityFilter" level="info" additivity="false">
+        <appender-ref ref="USER_ACTIVITY_FILE"/>
+    </logger>
+</configuration>

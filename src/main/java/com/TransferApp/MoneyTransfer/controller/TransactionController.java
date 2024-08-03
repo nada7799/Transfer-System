@@ -10,6 +10,9 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
@@ -34,7 +37,7 @@ public class TransactionController {
             responseCode = "200", description = "Successful transfer"
     )
     @PostMapping("/transfer")
-    public ResponseEntity<Void> transferMoney(@RequestBody TransferRequestDTO transferRequest) {
+    public ResponseEntity<Void> transferMoney(@RequestBody @Valid TransferRequestDTO transferRequest) {
         transactionService.transferMoney(transferRequest);
         return ResponseEntity.ok().build();
 }
@@ -59,7 +62,7 @@ public class TransactionController {
             )
     )
     @GetMapping("/{id}")
-    public ResponseEntity<Transaction> getTransactionById(@PathVariable Long id) {
+    public ResponseEntity<Transaction> getTransactionById(@PathVariable @NotNull @Positive Long id) {
         Optional<Transaction> transaction = transactionService.getTransactionById(id);
         return transaction.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -74,7 +77,7 @@ public class TransactionController {
             )
     )
     @GetMapping("/account/{accountId}")
-    public ResponseEntity<Page<Transaction>> getTransactionsByAccountId(@PathVariable Long accountId) {
+    public ResponseEntity<Page<Transaction>> getTransactionsByAccountId(@PathVariable @NotNull @Positive Long accountId) {
         Page<Transaction> transactions = transactionService.getTransactionsByAccountId(accountId);
         return ResponseEntity.ok(transactions);
     }
@@ -86,7 +89,7 @@ public class TransactionController {
 //    }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTransaction(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteTransaction(@PathVariable @NotNull @Positive Long id) {
         transactionService.deleteTransaction(id);
         return ResponseEntity.noContent().build();
     }

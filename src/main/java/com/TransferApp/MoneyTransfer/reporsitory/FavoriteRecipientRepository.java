@@ -9,5 +9,5 @@ import java.util.List;
 @Repository
 public interface FavoriteRecipientRepository extends JpaRepository<FavoriteRecipient, Long> {
     List<FavoriteRecipient> findByCustomerId(long customerId);
-    void deleteByIdAndCustomerId(long id, long customerId);
+    void deleteByCustomerIdAndRecipientId(long id, long customerId);
 }

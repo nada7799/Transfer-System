@@ -1,0 +1,431 @@
+2024-08-03 13:11:49 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-08-03 13:11:49 INFO  c.T.M.MoneyTransferApplication - Starting MoneyTransferApplication using Java 22.0.2 with PID 2080 (C:\Users\Lenovo\Downloads\MoneyTransfer\MoneyTransfer\target\classes started by Lenovo in C:\Users\Lenovo\Downloads\MoneyTransfer\MoneyTransfer)
+2024-08-03 13:11:49 DEBUG c.T.M.MoneyTransferApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2024-08-03 13:11:49 INFO  c.T.M.MoneyTransferApplication - No active profile set, falling back to 1 default profile: "default"
+2024-08-03 13:11:50 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-03 13:11:50 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 44 ms. Found 4 JPA repository interfaces.
+2024-08-03 13:11:50 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-08-03 13:11:50 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-08-03 13:11:50 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-08-03 13:11:50 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-03 13:11:50 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-08-03 13:11:50 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1076 ms
+2024-08-03 13:11:50 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-03 13:11:50 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-03 13:11:50 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-08-03 13:11:50 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-03 13:11:50 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-08-03 13:11:51 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5615f82d
+2024-08-03 13:11:51 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-08-03 13:11:51 WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-03 13:11:51 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-03 13:11:52 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-03 13:11:52 DEBUG c.T.M.s.sercurity.AuthTokenFilter - Filter 'authenticationJwtTokenFilter' configured for use
+2024-08-03 13:11:52 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-08-03 13:11:52 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-08-03 13:11:52 DEBUG o.s.s.a.p.PrePostAnnotationSecurityMetadataSource - @org.springframework.security.access.prepost.PreAuthorize(value="@userAuthorizationService.canAccessUser(#id, authentication.name)") found on specific method: public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.service.customerService.updateCustomer(long,com.TransferApp.MoneyTransfer.dto.updateCustomerDTO) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException
+2024-08-03 13:11:52 DEBUG o.s.s.a.m.DelegatingMethodSecurityMetadataSource - Caching method [CacheKey[com.TransferApp.MoneyTransfer.service.customerService; public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.service.customerService.updateCustomer(long,com.TransferApp.MoneyTransfer.dto.updateCustomerDTO) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException]] with attributes [[authorize: '@userAuthorizationService.canAccessUser(#id, authentication.name)', filter: 'null', filterTarget: 'null']]
+2024-08-03 13:11:52 DEBUG o.s.s.a.p.PrePostAnnotationSecurityMetadataSource - @org.springframework.security.access.prepost.PreAuthorize(value="@userAuthorizationService.canAccessUser(#id, authentication.name)") found on specific method: public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.service.customerService.getCustomerById(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException
+2024-08-03 13:11:52 DEBUG o.s.s.a.m.DelegatingMethodSecurityMetadataSource - Caching method [CacheKey[com.TransferApp.MoneyTransfer.service.customerService; public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.service.customerService.getCustomerById(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException]] with attributes [[authorize: '@userAuthorizationService.canAccessUser(#id, authentication.name)', filter: 'null', filterTarget: 'null']]
+2024-08-03 13:11:52 DEBUG o.s.s.a.p.PrePostAnnotationSecurityMetadataSource - @org.springframework.security.access.prepost.PreAuthorize(value="@userAuthorizationService.canAccessUser(#id, authentication.name)") found on specific method: public void com.TransferApp.MoneyTransfer.service.customerService.deleteCustomer(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException
+2024-08-03 13:11:52 DEBUG o.s.s.a.m.DelegatingMethodSecurityMetadataSource - Caching method [CacheKey[com.TransferApp.MoneyTransfer.service.customerService; public void com.TransferApp.MoneyTransfer.service.customerService.deleteCustomer(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException]] with attributes [[authorize: '@userAuthorizationService.canAccessUser(#id, authentication.name)', filter: 'null', filterTarget: 'null']]
+2024-08-03 13:11:52 DEBUG o.s.s.a.p.PrePostAnnotationSecurityMetadataSource - @org.springframework.security.access.prepost.PreAuthorize(value="@userAuthorizationService.canAccessUser(#id, authentication.name)") found on specific method: public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.controller.CustomerController.updateCustomer(long,com.TransferApp.MoneyTransfer.dto.updateCustomerDTO) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException
+2024-08-03 13:11:52 DEBUG o.s.s.a.m.DelegatingMethodSecurityMetadataSource - Caching method [CacheKey[com.TransferApp.MoneyTransfer.controller.CustomerController; public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.controller.CustomerController.updateCustomer(long,com.TransferApp.MoneyTransfer.dto.updateCustomerDTO) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException]] with attributes [[authorize: '@userAuthorizationService.canAccessUser(#id, authentication.name)', filter: 'null', filterTarget: 'null']]
+2024-08-03 13:11:52 DEBUG o.s.s.a.p.PrePostAnnotationSecurityMetadataSource - @org.springframework.security.access.prepost.PreAuthorize(value="@userAuthorizationService.canAccessUser(#id, authentication.name)") found on specific method: public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.controller.CustomerController.getCustomerById(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException
+2024-08-03 13:11:52 DEBUG o.s.s.a.m.DelegatingMethodSecurityMetadataSource - Caching method [CacheKey[com.TransferApp.MoneyTransfer.controller.CustomerController; public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.controller.CustomerController.getCustomerById(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException]] with attributes [[authorize: '@userAuthorizationService.canAccessUser(#id, authentication.name)', filter: 'null', filterTarget: 'null']]
+2024-08-03 13:11:52 DEBUG o.s.s.a.p.PrePostAnnotationSecurityMetadataSource - @org.springframework.security.access.prepost.PreAuthorize(value="@userAuthorizationService.canAccessUser(#id, authentication.name)") found on specific method: public void com.TransferApp.MoneyTransfer.controller.CustomerController.deleteCustomer(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException
+2024-08-03 13:11:52 DEBUG o.s.s.a.m.DelegatingMethodSecurityMetadataSource - Caching method [CacheKey[com.TransferApp.MoneyTransfer.controller.CustomerController; public void com.TransferApp.MoneyTransfer.controller.CustomerController.deleteCustomer(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException]] with attributes [[authorize: '@userAuthorizationService.canAccessUser(#id, authentication.name)', filter: 'null', filterTarget: 'null']]
+2024-08-03 13:11:52 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-03 13:11:52 DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, AuthTokenFilter, ConcurrentSessionFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-08-03 13:11:52 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-08-03 13:11:52 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-08-03 13:11:52 INFO  c.T.M.MoneyTransferApplication - Started MoneyTransferApplication in 3.911 seconds (process running for 4.411)
+2024-08-03 13:13:02 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-03 13:13:02 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-08-03 13:13:02 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-08-03 13:13:51 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-08-03 13:13:51 INFO  c.T.M.MoneyTransferApplication - Starting MoneyTransferApplication using Java 22.0.2 with PID 7764 (C:\Users\Lenovo\Downloads\MoneyTransfer\MoneyTransfer\target\classes started by Lenovo in C:\Users\Lenovo\Downloads\MoneyTransfer\MoneyTransfer)
+2024-08-03 13:13:51 DEBUG c.T.M.MoneyTransferApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2024-08-03 13:13:51 INFO  c.T.M.MoneyTransferApplication - No active profile set, falling back to 1 default profile: "default"
+2024-08-03 13:13:51 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-03 13:13:52 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 42 ms. Found 4 JPA repository interfaces.
+2024-08-03 13:13:52 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-08-03 13:13:52 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-08-03 13:13:52 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-08-03 13:13:52 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-03 13:13:52 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-08-03 13:13:52 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1118 ms
+2024-08-03 13:13:52 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-03 13:13:52 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-03 13:13:52 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-08-03 13:13:52 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-03 13:13:52 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-08-03 13:13:53 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3dc2f14
+2024-08-03 13:13:53 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-08-03 13:13:53 WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-03 13:13:54 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-03 13:13:54 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-03 13:13:54 DEBUG c.T.M.s.sercurity.AuthTokenFilter - Filter 'authenticationJwtTokenFilter' configured for use
+2024-08-03 13:13:54 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-08-03 13:13:54 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-08-03 13:13:54 DEBUG o.s.s.a.p.PrePostAnnotationSecurityMetadataSource - @org.springframework.security.access.prepost.PreAuthorize(value="@userAuthorizationService.canAccessUser(#id, authentication.name)") found on specific method: public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.service.customerService.getCustomerById(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException
+2024-08-03 13:13:54 DEBUG o.s.s.a.m.DelegatingMethodSecurityMetadataSource - Caching method [CacheKey[com.TransferApp.MoneyTransfer.service.customerService; public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.service.customerService.getCustomerById(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException]] with attributes [[authorize: '@userAuthorizationService.canAccessUser(#id, authentication.name)', filter: 'null', filterTarget: 'null']]
+2024-08-03 13:13:54 DEBUG o.s.s.a.p.PrePostAnnotationSecurityMetadataSource - @org.springframework.security.access.prepost.PreAuthorize(value="@userAuthorizationService.canAccessUser(#id, authentication.name)") found on specific method: public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.service.customerService.updateCustomer(long,com.TransferApp.MoneyTransfer.dto.updateCustomerDTO) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException
+2024-08-03 13:13:54 DEBUG o.s.s.a.m.DelegatingMethodSecurityMetadataSource - Caching method [CacheKey[com.TransferApp.MoneyTransfer.service.customerService; public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.service.customerService.updateCustomer(long,com.TransferApp.MoneyTransfer.dto.updateCustomerDTO) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException]] with attributes [[authorize: '@userAuthorizationService.canAccessUser(#id, authentication.name)', filter: 'null', filterTarget: 'null']]
+2024-08-03 13:13:54 DEBUG o.s.s.a.p.PrePostAnnotationSecurityMetadataSource - @org.springframework.security.access.prepost.PreAuthorize(value="@userAuthorizationService.canAccessUser(#id, authentication.name)") found on specific method: public void com.TransferApp.MoneyTransfer.service.customerService.deleteCustomer(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException
+2024-08-03 13:13:54 DEBUG o.s.s.a.m.DelegatingMethodSecurityMetadataSource - Caching method [CacheKey[com.TransferApp.MoneyTransfer.service.customerService; public void com.TransferApp.MoneyTransfer.service.customerService.deleteCustomer(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException]] with attributes [[authorize: '@userAuthorizationService.canAccessUser(#id, authentication.name)', filter: 'null', filterTarget: 'null']]
+2024-08-03 13:13:54 DEBUG o.s.s.a.p.PrePostAnnotationSecurityMetadataSource - @org.springframework.security.access.prepost.PreAuthorize(value="@userAuthorizationService.canAccessUser(#id, authentication.name)") found on specific method: public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.controller.CustomerController.getCustomerById(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException
+2024-08-03 13:13:54 DEBUG o.s.s.a.m.DelegatingMethodSecurityMetadataSource - Caching method [CacheKey[com.TransferApp.MoneyTransfer.controller.CustomerController; public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.controller.CustomerController.getCustomerById(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException]] with attributes [[authorize: '@userAuthorizationService.canAccessUser(#id, authentication.name)', filter: 'null', filterTarget: 'null']]
+2024-08-03 13:13:54 DEBUG o.s.s.a.p.PrePostAnnotationSecurityMetadataSource - @org.springframework.security.access.prepost.PreAuthorize(value="@userAuthorizationService.canAccessUser(#id, authentication.name)") found on specific method: public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.controller.CustomerController.updateCustomer(long,com.TransferApp.MoneyTransfer.dto.updateCustomerDTO) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException
+2024-08-03 13:13:54 DEBUG o.s.s.a.m.DelegatingMethodSecurityMetadataSource - Caching method [CacheKey[com.TransferApp.MoneyTransfer.controller.CustomerController; public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.controller.CustomerController.updateCustomer(long,com.TransferApp.MoneyTransfer.dto.updateCustomerDTO) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException]] with attributes [[authorize: '@userAuthorizationService.canAccessUser(#id, authentication.name)', filter: 'null', filterTarget: 'null']]
+2024-08-03 13:13:54 DEBUG o.s.s.a.p.PrePostAnnotationSecurityMetadataSource - @org.springframework.security.access.prepost.PreAuthorize(value="@userAuthorizationService.canAccessUser(#id, authentication.name)") found on specific method: public void com.TransferApp.MoneyTransfer.controller.CustomerController.deleteCustomer(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException
+2024-08-03 13:13:54 DEBUG o.s.s.a.m.DelegatingMethodSecurityMetadataSource - Caching method [CacheKey[com.TransferApp.MoneyTransfer.controller.CustomerController; public void com.TransferApp.MoneyTransfer.controller.CustomerController.deleteCustomer(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException]] with attributes [[authorize: '@userAuthorizationService.canAccessUser(#id, authentication.name)', filter: 'null', filterTarget: 'null']]
+2024-08-03 13:13:54 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-03 13:13:55 DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, AuthTokenFilter, ConcurrentSessionFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-08-03 13:13:55 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-08-03 13:13:55 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-08-03 13:13:55 INFO  c.T.M.MoneyTransferApplication - Started MoneyTransferApplication in 4.348 seconds (process running for 4.896)
+2024-08-03 13:21:06 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-03 13:21:06 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-08-03 13:21:06 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 16 ms
+2024-08-03 13:21:06 DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/register
+2024-08-03 13:21:06 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2024-08-03 13:21:06 DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/register
+2024-08-03 13:21:55 DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/login
+2024-08-03 13:21:55 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2024-08-03 13:21:55 DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/login
+2024-08-03 13:21:55 DEBUG o.s.s.a.d.DaoAuthenticationProvider - Authenticated user
+2024-08-03 13:22:51 DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/transactions/transfer
+2024-08-03 13:22:51 ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Filter execution threw an exception] with root cause
+java.lang.NoSuchMethodError: 'void jakarta.servlet.http.Cookie.setAttribute(java.lang.String, java.lang.String)'
+	at org.apache.catalina.core.ApplicationSessionCookieConfig.createSessionCookie(ApplicationSessionCookieConfig.java:224)
+	at org.apache.catalina.connector.Request.doGetSession(Request.java:2757)
+	at org.apache.catalina.connector.Request.getSession(Request.java:2199)
+	at org.apache.catalina.connector.RequestFacade.getSession(RequestFacade.java:639)
+	at org.apache.catalina.connector.RequestFacade.getSession(RequestFacade.java:645)
+	at jakarta.servlet.http.HttpServletRequestWrapper.getSession(HttpServletRequestWrapper.java:229)
+	at jakarta.servlet.http.HttpServletRequestWrapper.getSession(HttpServletRequestWrapper.java:229)
+	at jakarta.servlet.http.HttpServletRequestWrapper.getSession(HttpServletRequestWrapper.java:229)
+	at org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy.onAuthentication(RegisterSessionAuthenticationStrategy.java:67)
+	at org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy.onAuthentication(CompositeSessionAuthenticationStrategy.java:81)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:101)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:151)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:129)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at com.TransferApp.MoneyTransfer.service.sercurity.AuthTokenFilter.doFilterInternal(AuthTokenFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+2024-08-03 13:22:51 DEBUG o.s.security.web.FilterChainProxy - Securing POST /error
+2024-08-03 13:22:51 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2024-08-03 13:22:51 DEBUG o.s.s.w.s.HttpSessionRequestCache - Saved request http://localhost:8080/error?continue to session
+2024-08-03 13:22:51 ERROR c.T.M.s.sercurity.AuthEntryPointJwt - Error while handling jwt , exception : Full authentication is required to access this resource
+2024-08-03 13:23:04 DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/transactions/transfer
+2024-08-03 13:23:04 ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Filter execution threw an exception] with root cause
+java.lang.NoSuchMethodError: 'void jakarta.servlet.http.Cookie.setAttribute(java.lang.String, java.lang.String)'
+	at org.apache.catalina.core.ApplicationSessionCookieConfig.createSessionCookie(ApplicationSessionCookieConfig.java:224)
+	at org.apache.catalina.connector.Request.doGetSession(Request.java:2757)
+	at org.apache.catalina.connector.Request.getSession(Request.java:2199)
+	at org.apache.catalina.connector.RequestFacade.getSession(RequestFacade.java:639)
+	at org.apache.catalina.connector.RequestFacade.getSession(RequestFacade.java:645)
+	at jakarta.servlet.http.HttpServletRequestWrapper.getSession(HttpServletRequestWrapper.java:229)
+	at jakarta.servlet.http.HttpServletRequestWrapper.getSession(HttpServletRequestWrapper.java:229)
+	at jakarta.servlet.http.HttpServletRequestWrapper.getSession(HttpServletRequestWrapper.java:229)
+	at org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy.onAuthentication(RegisterSessionAuthenticationStrategy.java:67)
+	at org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy.onAuthentication(CompositeSessionAuthenticationStrategy.java:81)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:101)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:151)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:129)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at com.TransferApp.MoneyTransfer.service.sercurity.AuthTokenFilter.doFilterInternal(AuthTokenFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+2024-08-03 13:23:04 DEBUG o.s.security.web.FilterChainProxy - Securing POST /error
+2024-08-03 13:23:04 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2024-08-03 13:23:04 DEBUG o.s.s.w.s.HttpSessionRequestCache - Saved request http://localhost:8080/error?continue to session
+2024-08-03 13:23:04 ERROR c.T.M.s.sercurity.AuthEntryPointJwt - Error while handling jwt , exception : Full authentication is required to access this resource
+2024-08-03 13:23:10 DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/login
+2024-08-03 13:23:10 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2024-08-03 13:23:10 DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/login
+2024-08-03 13:23:10 DEBUG o.s.s.a.d.DaoAuthenticationProvider - Authenticated user
+2024-08-03 13:23:19 DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/transactions/transfer
+2024-08-03 13:23:19 ERROR o.a.c.c.C.[.[.[.[dispatcherServlet] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Filter execution threw an exception] with root cause
+java.lang.NoSuchMethodError: 'void jakarta.servlet.http.Cookie.setAttribute(java.lang.String, java.lang.String)'
+	at org.apache.catalina.core.ApplicationSessionCookieConfig.createSessionCookie(ApplicationSessionCookieConfig.java:224)
+	at org.apache.catalina.connector.Request.doGetSession(Request.java:2757)
+	at org.apache.catalina.connector.Request.getSession(Request.java:2199)
+	at org.apache.catalina.connector.RequestFacade.getSession(RequestFacade.java:639)
+	at org.apache.catalina.connector.RequestFacade.getSession(RequestFacade.java:645)
+	at jakarta.servlet.http.HttpServletRequestWrapper.getSession(HttpServletRequestWrapper.java:229)
+	at jakarta.servlet.http.HttpServletRequestWrapper.getSession(HttpServletRequestWrapper.java:229)
+	at jakarta.servlet.http.HttpServletRequestWrapper.getSession(HttpServletRequestWrapper.java:229)
+	at org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy.onAuthentication(RegisterSessionAuthenticationStrategy.java:67)
+	at org.springframework.security.web.authentication.session.CompositeSessionAuthenticationStrategy.onAuthentication(CompositeSessionAuthenticationStrategy.java:81)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:101)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:85)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:179)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:151)
+	at org.springframework.security.web.session.ConcurrentSessionFilter.doFilter(ConcurrentSessionFilter.java:129)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at com.TransferApp.MoneyTransfer.service.sercurity.AuthTokenFilter.doFilterInternal(AuthTokenFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.web.filter.CorsFilter.doFilterInternal(CorsFilter.java:91)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$3(HandlerMappingIntrospector.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:230)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:352)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:268)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:115)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:389)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:904)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1741)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1190)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1570)
+2024-08-03 13:23:19 DEBUG o.s.security.web.FilterChainProxy - Securing POST /error
+2024-08-03 13:23:19 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2024-08-03 13:23:19 DEBUG o.s.s.w.s.HttpSessionRequestCache - Saved request http://localhost:8080/error?continue to session
+2024-08-03 13:23:19 ERROR c.T.M.s.sercurity.AuthEntryPointJwt - Error while handling jwt , exception : Full authentication is required to access this resource
+2024-08-03 13:29:03 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-03 13:29:03 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-08-03 13:29:04 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2024-08-03 13:29:16 INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2024-08-03 13:29:16 INFO  c.T.M.MoneyTransferApplication - Starting MoneyTransferApplication using Java 22.0.2 with PID 17592 (C:\Users\Lenovo\Downloads\MoneyTransfer\MoneyTransfer\target\classes started by Lenovo in C:\Users\Lenovo\Downloads\MoneyTransfer\MoneyTransfer)
+2024-08-03 13:29:16 DEBUG c.T.M.MoneyTransferApplication - Running with Spring Boot v3.3.2, Spring v6.1.11
+2024-08-03 13:29:16 INFO  c.T.M.MoneyTransferApplication - No active profile set, falling back to 1 default profile: "default"
+2024-08-03 13:29:16 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-08-03 13:29:16 INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 47 ms. Found 4 JPA repository interfaces.
+2024-08-03 13:29:17 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2024-08-03 13:29:17 INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2024-08-03 13:29:17 INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2024-08-03 13:29:17 INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.26]
+2024-08-03 13:29:17 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2024-08-03 13:29:17 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1139 ms
+2024-08-03 13:29:17 INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-08-03 13:29:17 INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.5.2.Final
+2024-08-03 13:29:17 INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2024-08-03 13:29:17 INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2024-08-03 13:29:17 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2024-08-03 13:29:18 INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@1ab9c735
+2024-08-03 13:29:18 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2024-08-03 13:29:18 WARN  org.hibernate.orm.deprecation - HHH90000025: MySQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2024-08-03 13:29:19 INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2024-08-03 13:29:20 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-08-03 13:29:20 DEBUG c.T.M.s.sercurity.AuthTokenFilter - Filter 'authenticationJwtTokenFilter' configured for use
+2024-08-03 13:29:20 INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2024-08-03 13:29:20 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2024-08-03 13:29:20 DEBUG o.s.s.a.p.PrePostAnnotationSecurityMetadataSource - @org.springframework.security.access.prepost.PreAuthorize(value="@userAuthorizationService.canAccessUser(#id, authentication.name)") found on specific method: public void com.TransferApp.MoneyTransfer.service.customerService.deleteCustomer(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException
+2024-08-03 13:29:20 DEBUG o.s.s.a.m.DelegatingMethodSecurityMetadataSource - Caching method [CacheKey[com.TransferApp.MoneyTransfer.service.customerService; public void com.TransferApp.MoneyTransfer.service.customerService.deleteCustomer(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException]] with attributes [[authorize: '@userAuthorizationService.canAccessUser(#id, authentication.name)', filter: 'null', filterTarget: 'null']]
+2024-08-03 13:29:20 DEBUG o.s.s.a.p.PrePostAnnotationSecurityMetadataSource - @org.springframework.security.access.prepost.PreAuthorize(value="@userAuthorizationService.canAccessUser(#id, authentication.name)") found on specific method: public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.service.customerService.updateCustomer(long,com.TransferApp.MoneyTransfer.dto.updateCustomerDTO) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException
+2024-08-03 13:29:20 DEBUG o.s.s.a.m.DelegatingMethodSecurityMetadataSource - Caching method [CacheKey[com.TransferApp.MoneyTransfer.service.customerService; public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.service.customerService.updateCustomer(long,com.TransferApp.MoneyTransfer.dto.updateCustomerDTO) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException]] with attributes [[authorize: '@userAuthorizationService.canAccessUser(#id, authentication.name)', filter: 'null', filterTarget: 'null']]
+2024-08-03 13:29:20 DEBUG o.s.s.a.p.PrePostAnnotationSecurityMetadataSource - @org.springframework.security.access.prepost.PreAuthorize(value="@userAuthorizationService.canAccessUser(#id, authentication.name)") found on specific method: public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.service.customerService.getCustomerById(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException
+2024-08-03 13:29:20 DEBUG o.s.s.a.m.DelegatingMethodSecurityMetadataSource - Caching method [CacheKey[com.TransferApp.MoneyTransfer.service.customerService; public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.service.customerService.getCustomerById(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException]] with attributes [[authorize: '@userAuthorizationService.canAccessUser(#id, authentication.name)', filter: 'null', filterTarget: 'null']]
+2024-08-03 13:29:20 DEBUG o.s.s.a.p.PrePostAnnotationSecurityMetadataSource - @org.springframework.security.access.prepost.PreAuthorize(value="@userAuthorizationService.canAccessUser(#id, authentication.name)") found on specific method: public void com.TransferApp.MoneyTransfer.controller.CustomerController.deleteCustomer(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException
+2024-08-03 13:29:20 DEBUG o.s.s.a.m.DelegatingMethodSecurityMetadataSource - Caching method [CacheKey[com.TransferApp.MoneyTransfer.controller.CustomerController; public void com.TransferApp.MoneyTransfer.controller.CustomerController.deleteCustomer(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException]] with attributes [[authorize: '@userAuthorizationService.canAccessUser(#id, authentication.name)', filter: 'null', filterTarget: 'null']]
+2024-08-03 13:29:20 DEBUG o.s.s.a.p.PrePostAnnotationSecurityMetadataSource - @org.springframework.security.access.prepost.PreAuthorize(value="@userAuthorizationService.canAccessUser(#id, authentication.name)") found on specific method: public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.controller.CustomerController.updateCustomer(long,com.TransferApp.MoneyTransfer.dto.updateCustomerDTO) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException
+2024-08-03 13:29:20 DEBUG o.s.s.a.m.DelegatingMethodSecurityMetadataSource - Caching method [CacheKey[com.TransferApp.MoneyTransfer.controller.CustomerController; public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.controller.CustomerController.updateCustomer(long,com.TransferApp.MoneyTransfer.dto.updateCustomerDTO) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException]] with attributes [[authorize: '@userAuthorizationService.canAccessUser(#id, authentication.name)', filter: 'null', filterTarget: 'null']]
+2024-08-03 13:29:20 DEBUG o.s.s.a.p.PrePostAnnotationSecurityMetadataSource - @org.springframework.security.access.prepost.PreAuthorize(value="@userAuthorizationService.canAccessUser(#id, authentication.name)") found on specific method: public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.controller.CustomerController.getCustomerById(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException
+2024-08-03 13:29:20 DEBUG o.s.s.a.m.DelegatingMethodSecurityMetadataSource - Caching method [CacheKey[com.TransferApp.MoneyTransfer.controller.CustomerController; public com.TransferApp.MoneyTransfer.dto.customerDTO com.TransferApp.MoneyTransfer.controller.CustomerController.getCustomerById(long) throws com.TransferApp.MoneyTransfer.exception.CustomerNotFoundException]] with attributes [[authorize: '@userAuthorizationService.canAccessUser(#id, authentication.name)', filter: 'null', filterTarget: 'null']]
+2024-08-03 13:29:20 WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-08-03 13:29:20 DEBUG o.s.s.web.DefaultSecurityFilterChain - Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, AuthTokenFilter, ConcurrentSessionFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2024-08-03 13:29:20 INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2024-08-03 13:29:20 INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2024-08-03 13:29:20 INFO  c.T.M.MoneyTransferApplication - Started MoneyTransferApplication in 5.149 seconds (process running for 5.626)
+2024-08-03 13:29:30 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-08-03 13:29:30 INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2024-08-03 13:29:30 INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2024-08-03 13:29:30 DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/login
+2024-08-03 13:29:30 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Set SecurityContextHolder to anonymous SecurityContext
+2024-08-03 13:29:30 DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/login
+2024-08-03 13:29:30 DEBUG o.s.s.a.d.DaoAuthenticationProvider - Authenticated user
+2024-08-03 13:29:39 DEBUG o.s.security.web.FilterChainProxy - Securing POST /api/transactions/transfer
+2024-08-03 13:29:39 DEBUG o.s.s.c.session.SessionRegistryImpl - Registering session 29EFA4A04EC2400C1657BD32E08B0080, for principal CustomerDetailsImpl(id=4, email=amir@gmail.com, password=$2a$10$sPIqgrIoJKasRhoqrRarA.6.n0f.6ZNJhmRliNl8YrLaMmIdb8xYW)
+2024-08-03 13:29:39 DEBUG o.s.s.w.c.HttpSessionSecurityContextRepository - Stored SecurityContextImpl [Authentication=UsernamePasswordAuthenticationToken [Principal=CustomerDetailsImpl(id=4, email=amir@gmail.com, password=$2a$10$sPIqgrIoJKasRhoqrRarA.6.n0f.6ZNJhmRliNl8YrLaMmIdb8xYW), Credentials=[PROTECTED], Authenticated=true, Details=null, Granted Authorities=[]]] to HttpSession [org.apache.catalina.session.StandardSessionFacade@11418f1e]
+2024-08-03 13:29:39 DEBUG o.s.security.web.FilterChainProxy - Secured POST /api/transactions/transfer
+2024-08-03 13:29:39 INFO  c.T.M.logging.UserActivityFilter - User: amir@gmail.com, URL: /api/transactions/transfer, Timestamp: 2024-08-03T13:29:39.628602300
+2024-08-03 13:31:03 INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-08-03 13:31:03 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2024-08-03 13:31:03 INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
