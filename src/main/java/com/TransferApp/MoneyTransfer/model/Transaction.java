@@ -52,6 +52,7 @@ public class Transaction {
 
     @UpdateTimestamp
     private LocalDateTime updatedAt;
+    @Version
+    private Long version;
 
-    // Getters and Setters
 }

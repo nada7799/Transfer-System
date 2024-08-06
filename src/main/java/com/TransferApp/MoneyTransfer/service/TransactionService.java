@@ -30,11 +30,11 @@ public class TransactionService  implements ITransaction{
     @Transactional
     public void transferMoney(TransferRequestDTO transferRequest) {
         Long sanitizedFromAccountId = inputSanitizer.sanitizeLong(transferRequest.getSourceAccountId().toString());
-        Long sanitizedToAccountId = inputSanitizer.sanitizeLong(transferRequest.getDestinationAccountId().toString());
+        String sanitizedToAccountNumber = inputSanitizer.sanitize(transferRequest.getAccountNumber());
         Double sanitizedAmount = inputSanitizer.sanitizeDouble(transferRequest.getAmount().toString());
         Account sourceAccount = accountRepository.findById(sanitizedFromAccountId)
                 .orElseThrow(() -> new IllegalArgumentException("Source account not found"));
-        Account destinationAccount = accountRepository.findById(sanitizedToAccountId)
+        Account destinationAccount = accountRepository.findByAccountNumber(sanitizedToAccountNumber)
                 .orElseThrow(() -> new IllegalArgumentException("Destination account not found"));
 
         if (sourceAccount.getBalance() < sanitizedAmount) {

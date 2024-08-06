@@ -12,7 +12,6 @@ import com.TransferApp.MoneyTransfer.model.Customer;
 import com.TransferApp.MoneyTransfer.reporsitory.AccountRepository;
 import com.TransferApp.MoneyTransfer.reporsitory.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 
@@ -31,17 +30,24 @@ public class AccountService {
 
     @Autowired
     private CurrencyConverter  currencyConverter;
-
+    @Autowired
+    private InputSanitizer inputSanitizer;
 
     public List<Account> getAllAccounts() {
         return accountRepository.findAll();
     }
 
     public Optional<Account> getAccountById(Long id) {
-        return accountRepository.findById(id);
+        long sanitizedId = inputSanitizer.sanitizeLong(id.toString());
+        return accountRepository.findById(sanitizedId);
     }
 
     public Account createAccount(CreateAccountDto createAccountDTO, long id) throws CustomerAlreadyExistsException {
+        String sanitizedCurrency = inputSanitizer.sanitize(createAccountDTO.getCurrency().toString());
+        String sanitizedAmount = inputSanitizer.sanitize(createAccountDTO.getAccountType().toString());
+         Currency currency = Currency.valueOf(sanitizedCurrency);
+         AccountType accountType = AccountType.valueOf(sanitizedAmount);
+
         Customer  customer = customerRepository.findById(id).orElseThrow(() -> new CustomerNotFoundException("Customer not found"));
 
         Account account =  Account.builder()

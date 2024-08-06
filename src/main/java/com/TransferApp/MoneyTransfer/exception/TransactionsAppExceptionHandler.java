@@ -75,6 +75,10 @@ public class TransactionsAppExceptionHandler {
                 .timestamp(LocalDateTime.now())
                 .build(), HttpStatus.INTERNAL_SERVER_ERROR);
     }
+    @ExceptionHandler(NumberFormatException.class)
+    public ResponseEntity<String> handleNumberFormatException(NumberFormatException ex) {
+        return ResponseEntity.badRequest().body("Invalid input format: " + ex.getMessage());
+    }
     @ExceptionHandler(ExpiredJwtException.class)
     public ResponseEntity<String> handleAuthenticationException(ExpiredJwtException ex) {
         return new ResponseEntity<>(ex.getMessage(), HttpStatus.UNAUTHORIZED);

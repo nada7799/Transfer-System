@@ -18,6 +18,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,22 +37,13 @@ public class TransactionController {
     @ApiResponse(
             responseCode = "200", description = "Successful transfer"
     )
+    @Transactional
     @PostMapping("/transfer")
     public ResponseEntity<Void> transferMoney(@RequestBody @Valid TransferRequestDTO transferRequest) {
         transactionService.transferMoney(transferRequest);
         return ResponseEntity.ok().build();
 }
 
-
-//    @PostMapping
-//    public ResponseEntity<Transaction> createTransaction(
-//            @RequestParam Long fromAccountId,
-//            @RequestParam Long toAccountId,
-//            @RequestParam double amount,
-//            @RequestParam TransactionType transactionType) {
-//        Transaction transaction = transactionService.createTransaction(fromAccountId, toAccountId, amount, transactionType);
-//        return new ResponseEntity<>(transaction, HttpStatus.CREATED);
-//    }
       @Operation(summary = "this gets the transaction with id --> id to display its info for a certain transaction")
     @ApiResponse(
             responseCode = "200",
@@ -61,12 +53,14 @@ public class TransactionController {
                     schema = @Schema(implementation = Transaction.class)
             )
     )
+      @Transactional(readOnly = true)
     @GetMapping("/{id}")
     public ResponseEntity<Transaction> getTransactionById(@PathVariable @NotNull @Positive Long id) {
         Optional<Transaction> transaction = transactionService.getTransactionById(id);
         return transaction.map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
       @Operation(summary = "this gets all the transactions that belong to an account with id --> accountId")
     @ApiResponse(
             responseCode = "200",
@@ -76,6 +70,7 @@ public class TransactionController {
                     schema = @Schema(implementation = Transaction.class)
             )
     )
+      @Transactional(readOnly = true)
     @GetMapping("/account/{accountId}")
     public ResponseEntity<Page<Transaction>> getTransactionsByAccountId(@PathVariable @NotNull @Positive Long accountId) {
         Page<Transaction> transactions = transactionService.getTransactionsByAccountId(accountId);
@@ -87,7 +82,7 @@ public class TransactionController {
 //        List<Transaction> transactions = transactionService.getAllTransactions();
 //        return ResponseEntity.ok(transactions);
 //    }
-
+    @Transactional
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteTransaction(@PathVariable @NotNull @Positive Long id) {
         transactionService.deleteTransaction(id);

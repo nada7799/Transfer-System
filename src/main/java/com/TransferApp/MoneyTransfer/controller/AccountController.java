@@ -13,6 +13,8 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -43,7 +45,7 @@ public class AccountController {
             )
     )
     @GetMapping("/{id}")
-    public ResponseEntity<Account> getAccountById(@PathVariable Long id) {
+    public ResponseEntity<Account> getAccountById(@PathVariable @Positive @NotNull Long id) {
         return accountService.getAccountById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -61,7 +63,7 @@ public class AccountController {
             )
     )
     @PostMapping("customer/{id}")
-    public ResponseEntity<Account> createAccount(@Valid @RequestBody CreateAccountDto createAccountDTO,@PathVariable long id) throws CustomerAlreadyExistsException {
+    public ResponseEntity<Account> createAccount(@Valid @RequestBody @NotNull CreateAccountDto createAccountDTO,@PathVariable @NotNull @Positive Long id) throws CustomerAlreadyExistsException {
 
         Account createdAccount = accountService.createAccount(createAccountDTO,id);
         return ResponseEntity.status(201).body(createdAccount);

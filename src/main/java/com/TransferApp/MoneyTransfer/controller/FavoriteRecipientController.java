@@ -31,12 +31,12 @@ public class FavoriteRecipientController {
                     schema = @Schema(implementation = FavoriteRecipient.class)
             )
     )
-    @PostMapping("{customerId}/{recipientId}")
+    @PostMapping("/{customerId}/{accountNumber}")
     public FavoriteRecipient addFavoriteRecipient(
             @PathVariable long customerId,
-            @PathVariable long recipientId) {
+            @PathVariable String accountNumber) {
 
-        return favoriteRecipientService.addFavoriteRecipient(customerId, recipientId);
+        return favoriteRecipientService.addFavoriteRecipient(customerId, accountNumber);
     }
 
     @Operation( summary = "getting all favorite recipients of customer with id --> customerId")

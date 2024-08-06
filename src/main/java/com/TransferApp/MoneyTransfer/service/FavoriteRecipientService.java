@@ -20,10 +20,10 @@ public class FavoriteRecipientService {
 
     @Autowired
     private FavoriteRecipientRepository favoriteRecipientRepository;
-    public FavoriteRecipient addFavoriteRecipient(long customerId, long recipientId) {
+    public FavoriteRecipient addFavoriteRecipient(long customerId, String accountNumber) {
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new RuntimeException("Customer not found"));
-        Customer recipient = customerRepository.findById(recipientId)
+        Customer recipient = customerRepository.findCustomerByAccountNumber(accountNumber)
                 .orElseThrow(() -> new RuntimeException("Recipient not found"));
 
         FavoriteRecipient favoriteRecipient = FavoriteRecipient.builder()
